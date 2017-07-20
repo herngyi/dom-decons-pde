@@ -1,0 +1,8 @@
+function [tris,verts,nbs] = dom2mesh2D(bdverts)
+%DOM2MESH Summary of this function goes here
+%   Detailed explanation goes here
+area = polyarea
+[tris,verts,nbs] = triangle(bdverts,'Quality',30,'MaxArea',)
+
+end
+
