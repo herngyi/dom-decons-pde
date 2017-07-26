@@ -6,13 +6,13 @@ function [V,F,N,n_bd] = dom2mesh2D(bdverts)
     %   'bdverts'  k by 2 list of points
     %
     % Outputs:
-    %   'verts'  #verts by 2 list of mesh vertices, boundary vertices listed
+    %   'V'  #V by 2 list of mesh vertices, boundary vertices listed
     %     before interior vertices
-    %   'tris'   #tris by 3 list of triangle vertex indices
-    %   'nbs'    #nbs by 3 list of triangle neighbours
+    %   'F'  #F by 3 list of triangle vertex indices
+    %   'N'  #N by 3 list of triangle neighbours
 
     area = polyarea(bdverts(:,1),bdverts(:,2));
-    [V,F,N,bd] = triangle_top(bdverts,'Quality',20,'MaxArea',area/50);
+    [V,F,N,bd] = triangle_top(bdverts,'Quality',20,'MaxArea',area/100);
 
     n_bd = sum(bd);
     perm = bd_perm(bd, n_bd, length(bd)-n_bd);
